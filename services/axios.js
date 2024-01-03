@@ -1,14 +1,21 @@
-import axios from 'axios';
+import axios from "axios";
+export const createApiToken = () => {
+  axios.defaults.withCredentials = true;
+  axios.defaults.withXSRFToken = true;
 
-const api = axios.create({
-  baseURL: 'http://127.0.0.1:8000/api',
-});
-
+  return axios.create({
+    baseURL: "http://localhost:8000/api/admin",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
+const api = createApiToken();
 // Hàm chung để thêm token vào header
 export const addTokenToRequest = (config) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
   if (token) {
-    config.headers['Authorization'] = `Bearer ${token}`;
+    config.headers["Authorization"] = `Bearer ${token}`;
   }
   return config;
 };

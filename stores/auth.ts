@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export const useAuthStore = defineStore("auth", {
   state: () => ({
     user: {},
@@ -13,7 +12,6 @@ export const useAuthStore = defineStore("auth", {
   actions: {
     async login(payload) {
       const token = useTokenStore();
-
       try {
         await axios
           .get("http://localhost:8000/sanctum/csrf-cookie", {

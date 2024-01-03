@@ -78,8 +78,8 @@ const payload = {
 };
 const token = useTokenStore();
 
-async function actionLogin() {
-    await auth.login(payload);
+ function actionLogin() {
+     auth.login(payload);
 }
 // async function actionLogin() {
 // 	auth.login(payload);
